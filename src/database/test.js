@@ -1,6 +1,5 @@
 const Database = require('./db')
-const creatProffy = require('./createProffy')
-const createProffy = require('./createProffy')
+// const creatProffy = require('./createProffy')
 
 Database.then(async (db) => {
     //Insert data
@@ -38,6 +37,8 @@ Database.then(async (db) => {
     //All proffys
     const selectedProffys = await db.all("SELECT * FROM proffys")
 
+    console.log(selectedProffys.length)
+
     //Consult classes
     const selectClassesAndProffys = await db.all(`
         SELECT classes.*, proffys.*
@@ -56,6 +57,4 @@ Database.then(async (db) => {
         AND class_schedule.time_from <= "520"
         AND class_schedule.time_to > "1220"
     `)
-
-    console.log(selectClassesSchedules)
 })

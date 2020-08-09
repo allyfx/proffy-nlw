@@ -3,6 +3,8 @@
 }
 
 #page-landing #container {
+    padding: 40px 0;
+    text-align: center;
     color: var(--color-text-in-primary);
 }
 
@@ -23,7 +25,7 @@
 }
 
 .hero-image {
-    width: 100%;
+    width: 80%;
 }
 
 
@@ -35,7 +37,7 @@
 }
 
 .buttons-container a {
-    width: 30rem;
+    width: 20rem;
     height: 10.4rem;
     border-radius: 0.8rem;
     font: 700 2.4rem Archivo;
@@ -74,37 +76,94 @@
 
 .total-connections {
     font-size: 1.8rem;
+}
+
+#page-landing .main-container {
+    height: 100%;
+    width: 100%;
+    padding: 15px 0;
+    background-color: var(--color-line-in-white);
+
     display: flex;
+    flex-direction: column;
     align-items: center;
+    align-content: center;
     justify-content: center;
 }
 
-.total-connections img {
-    margin-left: 0.8rem;
+.main-container .connections-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container .total-connections {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.main-container #welcome {
+    font-size: 2rem;
+    text-align: center;
 }
 
 @media (max-width: 699px) {
     :root {
         font-size: 40%;
     }
+
+    #page-landing .main-container {
+        height: 30%;
+    }
+
+    .main-container .total-connections {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 1.5rem;
+    }
 }
 
 @media (min-width: 1100px) {
     #page-landing #container {
         max-width: 1100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 150px 0;
+    }
+
+    #page-landing .main-container {
         display: grid;
-        grid-template-columns: 2fr 1fr 2fr;
-        grid-template-rows: 350px 1fr;
-        grid-template-areas: 
-        "proffy image image"
-        "button button texting";
-        gap: 60px;
-        column-gap: 87px;
-        row-gap: 86px;
+        grid-template-columns: 160px auto;
+        grid-template-rows: auto;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: center;
+    }
+
+    .main-container .connections-buttons {
+        grid-column: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .main-container .total-connections {
+        display: block;
+        width: 150px;
+        font-size: 1.2rem;
+        text-align: end;
+        margin: 0 50px 0 0;
+    }
+
+    .main-container #welcome {
+        width: 300px;
+        font-size: 2rem;
+        text-align: initial;
     }
 
     .logo-container {
-        grid-area: proffy;
         text-align: initial;
         align-self: center;
     }
@@ -116,18 +175,10 @@
     }
 
     .hero-image {
-        grid-area: image;
         height: 350px;
     }
 
-    .buttons-container {
-        grid-area: button;
-        justify-content: flex-start;
-    }
-
-    .total-connections {
-        grid-area: texting;
-        justify-self: end;
-        font-size: 1.2rem;
+    .buttons-container a {
+        width: 30rem;
     }
 }

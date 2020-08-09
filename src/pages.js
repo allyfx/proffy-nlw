@@ -7,9 +7,11 @@ function pageLading(req, res){
 
 async function pageStudy(req, res){
     const filters = req.query
+    const db = await Database
+    const allProffys = await db.all("SELECT * FROM proffys")
 
     if(!filters.subject || !filters.weekday || !filters.time) {
-        return res.render("study.html", { filters, subjects, weekdays })
+        return res.render("study.html", { filters, subjects, weekdays, allProffys })
     }
 
     //Converter horas em minutos
@@ -32,14 +34,13 @@ async function pageStudy(req, res){
 
     //Caso haja erro na hora da consulta do banco de dados
     try {
-        const db = await Database
         const proffys = await db.all(query)
 
         proffys.map((proffy) => {
             proffy.subject = getSubject(proffy.subject)
         })
 
-        return res.render('study.html', { proffys, subjects, filters, weekdays })
+        return res.render('study.html', { proffys, subjects, filters, weekdays, allProffys })
 
     } catch (error) {
         console.log(error)
@@ -80,8 +81,10 @@ async function saveClasses(req, res) {
         let queryString = "?subject=" + req.body.subject
         queryString += "&weekday=" + req.body.weekday[0]
         queryString += "&time=" + req.body.time_from[0]
-
-        return res.redirect("/study" + queryString)
+        
+        return setTimeout(() => {
+            return res.redirect("/study" + queryString)
+        }, 2000)
     } catch(error){
         console.log(error)
     }  
@@ -91,5 +94,5 @@ module.exports = {
     pageLading,
     pageStudy,
     pageGiveClasses,
-    saveClasses
+    saveClasses,
 }

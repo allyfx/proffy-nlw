@@ -9,9 +9,13 @@
         <link rel="stylesheet" href="/styles/partials/forms.css">
         <link rel="stylesheet" href="/styles/partials/page-give-classes.css">
         
+        <!-- Font Awesome -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+        
         <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
 
         <script src="/scripts/addField.js" defer></script>
+        <script src="/scripts/success.js"></script>
     </head>
     <body id="page-give-classes">
         <div id="container">
@@ -20,12 +24,16 @@
                     <a href="/">
                         <img src="/images/icons/back.svg" alt="Volar">
                     </a>
+                    <span class="page-text">Dar aulas</span>
                     <img src="/images/logo.svg" alt="Proffy">
                 </div>
 
                 <div class="header-content">
                     <strong>Que incrível que você quer dar aulas</strong>
-                    <p>O primeiro passo, é preencher esse formulário de inscrição.</p>
+                    <div class="message">
+                        <p>O primeiro passo, é preencher esse formulário de inscrição.</p>
+                        <p id="rocket"><img src="/images/icons/rocket.svg" alt="Rocket">Prepare-se!<br>Vai ser um máximo.</p>
+                    </div>
                 </div>
             </header>
 
@@ -78,7 +86,7 @@
                             <button type="button" id="add-time">+ Novo Horário</button>
                         </legend>
 
-                        <div class="schedule-item">
+                        <div id="1" class="schedule-item">
                             <div class="select-block">
                                 <label for="weekday">Dia da semana</label>
                                 <select name="weekday[]" required>
@@ -98,6 +106,10 @@
                                 <label for="time_to">Até</label>
                                 <input type="time" name="time_to[]" required>
                             </div>
+
+                            <a id="1" class="delete-schedule">
+                                <i class="fas fa-trash-alt" style="color: white;"></i>
+                            </a>
                         </div>
                     </fieldset>
                 </form>
@@ -108,9 +120,17 @@
                         Importante! </br>
                         Preencha todos os dados
                     </p>
-                    <button type="submit" form="create-class">Salvar cadastro</button>
+                    <button type="submit" form="create-class" onclick="showSuccessMessage()">Salvar cadastro</button>
                 </footer>
             </main>
+        </div>
+
+        <div id="success-message" class="success-message">
+            <div class="elements-success">
+                <img src="/images/icons/success-check-icon.svg" alt="Sucesso ícone">
+                <h1>Cadastro salvo!</h1>
+                <p>Tudo certo, seu cadastro está na nossa lista de professores. <br>Agora é só ficar de olho no seu Whatsapp.</p>
+            </div>
         </div>
     </body>
 </html>

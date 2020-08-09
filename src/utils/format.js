@@ -1,3 +1,5 @@
+const Database = require('../database/db')
+
 const subjects = [
     "Artes",
     "Biologia",
